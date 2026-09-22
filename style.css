@@ -1,0 +1,234 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: Georgia, serif;
+  color: #fffaf0;
+  background: #101526;
+}
+
+.progress-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 7px;
+  background: #ffd166;
+  z-index: 20;
+}
+
+.scene {
+  min-height: 100vh;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 30px;
+}
+
+.intro {
+  background: linear-gradient(#18254b, #6c5b8f);
+}
+
+.forest {
+  background: linear-gradient(#37455f, #52765a);
+}
+
+.well-scene {
+  min-height: 125vh;
+  background: linear-gradient(#28384f, #101522);
+  align-items: flex-start;
+  padding-top: 18vh;
+}
+
+.story-card {
+  width: min(520px, 90%);
+  padding: 30px;
+  text-align: center;
+  background: rgba(18, 23, 40, 0.72);
+  border: 2px solid rgba(255, 255, 255, 0.45);
+  border-radius: 14px;
+  z-index: 5;
+}
+
+h1 {
+  font-size: clamp(3rem, 9vw, 6rem);
+  color: #ffe29a;
+  margin: 8px 0 18px;
+}
+
+h2 {
+  font-size: clamp(2rem, 6vw, 3.5rem);
+  color: #ffe29a;
+  margin: 8px 0 18px;
+}
+
+p {
+  font-family: Arial, sans-serif;
+  font-size: 1.15rem;
+  line-height: 1.6;
+}
+
+.chapter {
+  text-transform: uppercase;
+  letter-spacing: 4px;
+  font-size: 0.75rem;
+  color: #ffcf70;
+}
+
+.scroll-note {
+  margin-top: 35px;
+  font-size: 0.9rem;
+}
+
+.layer {
+  position: absolute;
+  will-change: transform;
+}
+
+.moon {
+  width: 130px;
+  height: 130px;
+  background: #fff3c4;
+  border-radius: 50%;
+  top: 10%;
+  right: 12%;
+  box-shadow: 0 0 35px #fff3c4;
+}
+
+.castle {
+  left: 8%;
+  bottom: 8%;
+  font-size: 12rem;
+  color: #20243d;
+}
+
+.hill {
+  width: 130%;
+  height: 45%;
+  left: -15%;
+  bottom: -18%;
+  border-radius: 50% 50% 0 0;
+}
+
+.hill-back {
+  background: #42634c;
+  bottom: -10%;
+}
+
+.hill-front {
+  background: #233e34;
+  bottom: -25%;
+}
+
+.trees {
+  position: absolute;
+  bottom: 3%;
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  color: #172e29;
+  font-size: clamp(6rem, 15vw, 11rem);
+  z-index: 2;
+}
+
+.stars {
+  top: 4%;
+  width: 100%;
+  text-align: center;
+  font-size: 2.5rem;
+  word-spacing: 35px;
+  color: #ffd166;
+}
+
+.well {
+  position: absolute;
+  bottom: 12%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 220px;
+  height: 150px;
+}
+
+.well-top {
+  width: 220px;
+  height: 70px;
+  border-radius: 50%;
+  background: #070a12;
+  border: 18px solid #77727c;
+}
+
+.well-base {
+  width: 185px;
+  height: 90px;
+  margin: -22px auto 0;
+  background: #625e69;
+  border-radius: 0 0 20px 20px;
+}
+
+.princess {
+  position: absolute;
+  bottom: 31%;
+  left: calc(50% - 130px);
+  font-size: 4.5rem;
+  color: #ffb7d5;
+  z-index: 4;
+  transition: transform 0.15s linear;
+}
+
+.ending {
+  position: absolute;
+  bottom: 4%;
+  text-align: center;
+}
+
+.unfinished {
+  min-height: 65vh;
+  padding: 60px 25px;
+  display: grid;
+  place-items: center;
+  text-align: center;
+  background: #0b0e18;
+}
+
+.todo {
+  margin-top: 28px;
+  padding: 12px;
+  color: #242424;
+  background: #f7d774;
+  transform: rotate(-2deg);
+}
+
+/* JavaScript adds this class as each card enters the screen. */
+.reveal {
+  opacity: 0;
+  transform: translateY(45px);
+  transition: opacity 0.9s, transform 0.9s;
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (max-width: 600px) {
+  .story-card {
+    padding: 22px;
+  }
+
+  .castle {
+    font-size: 8rem;
+  }
+
+  .princess {
+    left: calc(50% - 100px);
+  }
+}
