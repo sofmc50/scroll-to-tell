@@ -1,18 +1,17 @@
-# The Well Below — rough draft
+# The Well Below
 
-This is an unfinished progress draft for the **Scroll to Tell** lab.
+This is my completed **Scroll to Tell** lab. It tells a short story about Princess Mira through seven scrolling scenes.
 
-Current progress:
+## What I used
 
-- three short story scenes
-- basic layered scenery made with CSS
-- parallax movement during scrolling
-- scroll progress bar
-- cards that reveal when they enter the screen
+- semantic HTML sections for each chapter
+- CSS layers and shapes for the scenery
+- CSS transitions and keyframe animations
+- a JavaScript scroll event for the progress bar and character movement
+- `IntersectionObserver` for progressive story reveals
+- responsive styling for smaller screens
+- two free-to-use Unsplash background photos with credits on the page
 
-Still to do:
+## Story
 
-- add the falling scene
-- add the underground cave
-- write the ending
-- improve mobile spacing and illustrations
+Princess Mira follows a voice to a forgotten well, falls into a hidden cave, and finds a little fallen star named Pip. She frees Pip, and together they find a way home.

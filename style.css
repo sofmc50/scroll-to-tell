@@ -12,6 +12,7 @@ body {
   font-family: Georgia, serif;
   color: #fffaf0;
   background: #101526;
+  overflow-x: hidden;
 }
 
 .progress-bar {
@@ -21,7 +22,7 @@ body {
   width: 0;
   height: 7px;
   background: #ffd166;
-  z-index: 20;
+  z-index: 30;
 }
 
 .scene {
@@ -39,42 +40,73 @@ body {
 }
 
 .forest {
-  background: linear-gradient(#37455f, #52765a);
+  background:
+    linear-gradient(rgba(20, 31, 50, 0.52), rgba(17, 46, 35, 0.72)),
+    url("images/night-forest.jpg") center / cover fixed;
 }
 
 .well-scene {
   min-height: 125vh;
   background: linear-gradient(#28384f, #101522);
   align-items: flex-start;
-  padding-top: 18vh;
+  padding-top: 17vh;
+}
+
+.cave {
+  min-height: 120vh;
+  background:
+    linear-gradient(rgba(8, 12, 22, 0.6), rgba(20, 24, 35, 0.72)),
+    url("images/cave-light.jpg") center / cover fixed;
+  align-items: flex-start;
+  padding-top: 15vh;
+}
+
+.rescue {
+  min-height: 130vh;
+  background:
+    linear-gradient(rgba(20, 34, 55, 0.68), rgba(90, 90, 118, 0.72)),
+    url("images/cave-light.jpg") center / cover fixed;
+  align-items: flex-start;
+  padding-top: 16vh;
+}
+
+.sunrise {
+  min-height: 110vh;
+  background: linear-gradient(#6c79a6, #efad9e 55%, #f7d99a);
 }
 
 .story-card {
   width: min(520px, 90%);
   padding: 30px;
   text-align: center;
-  background: rgba(18, 23, 40, 0.72);
+  background: rgba(18, 23, 40, 0.76);
   border: 2px solid rgba(255, 255, 255, 0.45);
   border-radius: 14px;
-  z-index: 5;
+  z-index: 8;
 }
 
 h1 {
   font-size: clamp(3rem, 9vw, 6rem);
   color: #ffe29a;
   margin: 8px 0 18px;
+  line-height: 0.95;
 }
 
 h2 {
   font-size: clamp(2rem, 6vw, 3.5rem);
   color: #ffe29a;
   margin: 8px 0 18px;
+  line-height: 1.05;
 }
 
 p {
   font-family: Arial, sans-serif;
-  font-size: 1.15rem;
+  font-size: 1.12rem;
   line-height: 1.6;
+}
+
+.story-card p + p {
+  margin-top: 10px;
 }
 
 .chapter {
@@ -84,14 +116,29 @@ p {
   color: #ffcf70;
 }
 
+.quote {
+  color: #ffe29a;
+  font-style: italic;
+}
+
 .scroll-note {
-  margin-top: 35px;
+  margin-top: 35px !important;
   font-size: 0.9rem;
+  animation: bob 1.8s ease-in-out infinite;
 }
 
 .layer {
   position: absolute;
   will-change: transform;
+}
+
+.sky-dots {
+  position: absolute;
+  top: 8%;
+  left: 8%;
+  color: #fff0b5;
+  font-size: 1.8rem;
+  word-spacing: 22px;
 }
 
 .moon {
@@ -140,7 +187,7 @@ p {
   z-index: 2;
 }
 
-.stars {
+.well-stars {
   top: 4%;
   width: 100%;
   text-align: center;
@@ -172,42 +219,325 @@ p {
   margin: -22px auto 0;
   background: #625e69;
   border-radius: 0 0 20px 20px;
+  background-image: linear-gradient(25deg, transparent 45%, #77727c 46%, #77727c 52%, transparent 53%);
 }
 
 .princess {
   position: absolute;
   bottom: 31%;
-  left: calc(50% - 130px);
+  left: calc(50% - 135px);
   font-size: 4.5rem;
   color: #ffb7d5;
   z-index: 4;
-  transition: transform 0.15s linear;
+  transition: transform 0.12s linear;
 }
 
-.ending {
+.scene-caption {
   position: absolute;
   bottom: 4%;
+  left: 50%;
+  width: min(620px, 88%);
+  transform: translateX(-50%);
   text-align: center;
+  z-index: 9;
 }
 
-.unfinished {
-  min-height: 65vh;
-  padding: 60px 25px;
-  display: grid;
-  place-items: center;
+/* The falling scene is taller so its middle can stay on screen while scrolling. */
+.fall-scene {
+  height: 210vh;
+  position: relative;
+  background: #090b14;
+}
+
+.fall-sticky {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.tunnel-wall {
+  position: absolute;
+  top: -5%;
+  height: 110%;
+  width: 28%;
+  background: repeating-linear-gradient(165deg, #24263a 0 35px, #191b2c 36px 72px);
+}
+
+.tunnel-left {
+  left: 0;
+  clip-path: polygon(0 0, 100% 7%, 70% 25%, 100% 46%, 66% 66%, 100% 86%, 78% 100%, 0 100%);
+}
+
+.tunnel-right {
+  right: 0;
+  clip-path: polygon(0 7%, 100% 0, 100% 100%, 22% 100%, 0 86%, 34% 66%, 0 46%, 30% 25%);
+}
+
+.falling-princess {
+  position: absolute;
+  top: 15vh;
+  left: 50%;
+  color: #ffb7d5;
+  font-size: 5rem;
+  z-index: 5;
+  transform: translateX(-50%);
+  will-change: transform;
+}
+
+.fall-message {
+  width: min(480px, 72%);
+  padding: 25px;
   text-align: center;
-  background: #0b0e18;
+  background: rgba(8, 10, 18, 0.82);
+  border: 1px solid #6d6f8b;
+  border-radius: 14px;
+  z-index: 4;
 }
 
-.todo {
-  margin-top: 28px;
-  padding: 12px;
-  color: #242424;
-  background: #f7d774;
-  transform: rotate(-2deg);
+.fall-spark {
+  position: absolute;
+  color: #ffd166;
+  font-size: 2rem;
 }
 
-/* JavaScript adds this class as each card enters the screen. */
+.spark-one {
+  left: 35%;
+  top: 25%;
+}
+
+.spark-two {
+  right: 34%;
+  top: 55%;
+}
+
+.spark-three {
+  left: 39%;
+  bottom: 12%;
+}
+
+.cave-glow {
+  width: 420px;
+  height: 420px;
+  left: calc(50% - 210px);
+  bottom: 2%;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(255, 218, 112, 0.45), transparent 68%);
+}
+
+.crystal {
+  bottom: 4%;
+  color: #92dcda;
+  text-shadow: 0 0 18px #8ff0eb;
+  font-size: clamp(7rem, 20vw, 14rem);
+}
+
+.crystal-left {
+  left: 5%;
+  transform: rotate(-10deg);
+}
+
+.crystal-right {
+  right: 6%;
+  transform: rotate(14deg);
+}
+
+.moss {
+  position: absolute;
+  bottom: -8%;
+  left: -5%;
+  width: 110%;
+  height: 28%;
+  border-radius: 50% 50% 0 0;
+  background: #1c3a32;
+}
+
+.cave-card {
+  z-index: 9;
+}
+
+.cave-characters {
+  position: absolute;
+  left: 50%;
+  bottom: 14%;
+  transform: translateX(-50%);
+  width: min(430px, 85%);
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  gap: 18px;
+  z-index: 5;
+}
+
+.cave-princess {
+  color: #ffb7d5;
+  font-size: 4.5rem;
+}
+
+.roots {
+  color: #887054;
+  font-size: 4rem;
+  letter-spacing: -15px;
+}
+
+.trapped-star {
+  color: #ffd166;
+  font-size: 4rem;
+  text-shadow: 0 0 20px #ffd166;
+  animation: starPulse 1.5s ease-in-out infinite;
+}
+
+.rescue .story-card {
+  z-index: 10;
+}
+
+.vine {
+  position: absolute;
+  left: calc(50% - 180px);
+  bottom: -2%;
+  width: 70px;
+  height: 72%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  color: #d7f0c0;
+  font-size: 3.2rem;
+  border-left: 10px solid #bbd49f;
+  transform: scaleY(var(--vine-progress, 0));
+  transform-origin: bottom;
+  transition: transform 0.1s linear;
+  z-index: 5;
+}
+
+.vine span:nth-child(even) {
+  transform: scaleX(-1);
+}
+
+.free-star {
+  position: absolute;
+  left: calc(50% + 135px);
+  bottom: 24%;
+  color: #ffe07c;
+  font-size: 5rem;
+  text-shadow: 0 0 25px #ffe07c;
+  transform: translateY(var(--star-rise, 0px));
+  transition: transform 0.12s linear;
+  z-index: 6;
+}
+
+.sun {
+  width: 170px;
+  height: 170px;
+  left: 50%;
+  top: 7%;
+  margin-left: -85px;
+  border-radius: 50%;
+  background: #fff0aa;
+  box-shadow: 0 0 55px #ffe29a;
+}
+
+.cloud {
+  width: 210px;
+  height: 55px;
+  border-radius: 50px;
+  background: rgba(255, 255, 255, 0.65);
+}
+
+.cloud::before,
+.cloud::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  border-radius: 50%;
+  background: inherit;
+}
+
+.cloud::before {
+  width: 85px;
+  height: 85px;
+  left: 30px;
+}
+
+.cloud::after {
+  width: 110px;
+  height: 110px;
+  right: 25px;
+}
+
+.cloud-one {
+  left: 8%;
+  top: 23%;
+}
+
+.cloud-two {
+  right: 7%;
+  top: 34%;
+  transform: scale(0.75);
+}
+
+.home-castle {
+  position: absolute;
+  left: 7%;
+  bottom: 2%;
+  font-size: 11rem;
+  color: #655a71;
+}
+
+.home-star {
+  position: absolute;
+  right: 16%;
+  top: 15%;
+  color: #fff8ce;
+  font-size: 4rem;
+  text-shadow: 0 0 20px white;
+  animation: starPulse 1.8s ease-in-out infinite;
+}
+
+.final-card {
+  background: rgba(50, 43, 65, 0.78);
+}
+
+.the-end {
+  margin-top: 25px !important;
+  color: #ffe29a;
+  font-family: Georgia, serif;
+  font-size: 1.7rem;
+  font-weight: bold;
+}
+
+.again-link {
+  display: inline-block;
+  margin-top: 22px;
+  padding: 10px 18px;
+  color: #26223b;
+  background: #ffe29a;
+  border-radius: 20px;
+  font-family: Arial, sans-serif;
+  text-decoration: none;
+}
+
+.again-link:hover,
+.again-link:focus {
+  background: white;
+}
+
+.photo-credit {
+  position: absolute;
+  bottom: 14px;
+  right: 18px;
+  font-size: 0.68rem;
+  color: #3c3548;
+}
+
+.photo-credit a {
+  color: inherit;
+}
+
+/* JavaScript adds this class as each part enters the screen. */
 .reveal {
   opacity: 0;
   transform: translateY(45px);
@@ -219,16 +549,106 @@ p {
   transform: translateY(0);
 }
 
-@media (max-width: 600px) {
+.scene-caption.reveal {
+  transform: translate(-50%, 45px);
+}
+
+.scene-caption.reveal.visible {
+  transform: translate(-50%, 0);
+}
+
+@keyframes bob {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(7px);
+  }
+}
+
+@keyframes starPulse {
+  0%,
+  100% {
+    transform: scale(0.9);
+    opacity: 0.75;
+  }
+  50% {
+    transform: scale(1.12);
+    opacity: 1;
+  }
+}
+
+@media (max-width: 700px) {
   .story-card {
     padding: 22px;
   }
 
-  .castle {
-    font-size: 8rem;
+  p {
+    font-size: 1rem;
+  }
+
+  .castle,
+  .home-castle {
+    font-size: 7.5rem;
+  }
+
+  .moon {
+    width: 90px;
+    height: 90px;
+    right: 7%;
   }
 
   .princess {
-    left: calc(50% - 100px);
+    left: calc(50% - 110px);
+  }
+
+  .tunnel-wall {
+    width: 22%;
+  }
+
+  .fall-message {
+    width: 75%;
+  }
+
+  .vine {
+    left: 12%;
+  }
+
+  .free-star {
+    left: auto;
+    right: 13%;
+  }
+
+  .cloud-one {
+    left: -12%;
+  }
+
+  .cloud-two {
+    right: -16%;
+  }
+
+  .forest,
+  .cave,
+  .rescue {
+    background-attachment: scroll;
+  }
+
+  .photo-credit {
+    left: 12px;
+    right: 12px;
+    text-align: center;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
   }
 }

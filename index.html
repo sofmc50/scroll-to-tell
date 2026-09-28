@@ -3,68 +3,153 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>The Well Below - Rough Draft</title>
+    <meta
+      name="description"
+      content="A short scrolling story about Princess Mira and the secret below an old well."
+    />
+    <title>The Well Below</title>
     <link rel="stylesheet" href="style.css" />
   </head>
 
-  <body>
-    <!-- This little bar grows as the page scrolls. -->
-    <div class="progress-bar" id="progressBar"></div>
+  <body id="top">
+    <!-- This bar grows as the reader moves through the story. -->
+    <div class="progress-bar" id="progressBar" aria-hidden="true"></div>
 
-    <section class="scene intro">
-      <div class="moon layer" data-speed="0.12"></div>
-      <div class="castle layer" data-speed="0.05">♜</div>
+    <main>
+      <section class="scene intro">
+        <div class="sky-dots" aria-hidden="true">· ✦ · ✧ · ✦ ·</div>
+        <div class="moon layer" data-speed="0.08"></div>
+        <div class="castle layer" data-speed="0.03" aria-hidden="true">♜</div>
 
-      <div class="story-card reveal">
-        <p class="chapter">Chapter One</p>
-        <h1>The Well Below</h1>
-        <p>Princess Mira was told to never go past the castle garden.</p>
-        <p class="scroll-note">Scroll to begin ↓</p>
-      </div>
-    </section>
+        <div class="story-card reveal">
+          <p class="chapter">Chapter One</p>
+          <h1>The Well Below</h1>
+          <p>Princess Mira was told to never go past the castle garden.</p>
+          <p class="scroll-note">Scroll to begin ↓</p>
+        </div>
+      </section>
 
-    <section class="scene forest">
-      <div class="hill hill-back layer" data-speed="0.08"></div>
-      <div class="hill hill-front layer" data-speed="0.16"></div>
+      <section class="scene forest">
+        <div class="hill hill-back layer" data-speed="0.04"></div>
+        <div class="hill hill-front layer" data-speed="0.09"></div>
 
-      <div class="trees" aria-hidden="true">
-        <span>♣</span><span>♣</span><span>♣</span><span>♣</span>
-      </div>
+        <div class="trees" aria-hidden="true">
+          <span>♣</span><span>♣</span><span>♣</span><span>♣</span>
+        </div>
 
-      <div class="story-card reveal">
-        <p class="chapter">Chapter Two</p>
-        <h2>A sound in the woods</h2>
-        <p>One evening, Mira heard a tiny voice calling from the trees.</p>
-        <p>“Help me... please.”</p>
-      </div>
-    </section>
+        <div class="story-card reveal">
+          <p class="chapter">Chapter Two</p>
+          <h2>A sound in the woods</h2>
+          <p>One evening, Mira heard a tiny voice calling from the trees.</p>
+          <p class="quote">“Help me... please.”</p>
+        </div>
+      </section>
 
-    <section class="scene well-scene" id="wellScene">
-      <div class="stars layer" data-speed="0.22">· ✦ · ✧ · ✦ ·</div>
+      <section class="scene well-scene" id="wellScene">
+        <div class="well-stars layer" data-speed="0.08" aria-hidden="true">
+          · ✦ · ✧ · ✦ ·
+        </div>
 
-      <div class="story-card reveal">
-        <p class="chapter">Chapter Three</p>
-        <h2>The forgotten well</h2>
-        <p>Mira leaned over the stones to look inside.</p>
-      </div>
+        <div class="story-card reveal">
+          <p class="chapter">Chapter Three</p>
+          <h2>The forgotten well</h2>
+          <p>Mira followed the voice to an old well hidden under ivy.</p>
+          <p>She leaned over the stones to look inside.</p>
+        </div>
 
-      <div class="princess" id="princess" aria-label="Princess Mira">♛</div>
-      <div class="well" aria-hidden="true">
-        <div class="well-top"></div>
-        <div class="well-base"></div>
-      </div>
+        <div class="princess" id="princess" aria-label="Princess Mira">♛</div>
+        <div class="well" aria-hidden="true">
+          <div class="well-top"></div>
+          <div class="well-base"></div>
+        </div>
 
-      <p class="ending reveal">The stone moved under her hand...</p>
-    </section>
+        <p class="scene-caption reveal">Then a loose stone moved under her hand...</p>
+      </section>
 
-    <section class="unfinished">
-      <div>
-        <p class="chapter">Rough draft ends here</p>
-        <h2>To be continued...</h2>
-        <p>Next: Mira falls into the well and discovers what was calling her.</p>
-        <p class="todo">TODO: add the falling scene, cave, and ending.</p>
-      </div>
-    </section>
+      <section class="fall-scene" id="fallScene">
+        <div class="fall-sticky">
+          <div class="tunnel-wall tunnel-left"></div>
+          <div class="tunnel-wall tunnel-right"></div>
+          <div class="fall-spark spark-one" aria-hidden="true">✦</div>
+          <div class="fall-spark spark-two" aria-hidden="true">·</div>
+          <div class="fall-spark spark-three" aria-hidden="true">✧</div>
+
+          <div class="falling-princess" id="fallingPrincess" aria-label="Mira falling">
+            ♛
+          </div>
+
+          <div class="fall-message reveal">
+            <p class="chapter">Chapter Four</p>
+            <h2>Down, down, down</h2>
+            <p>The moon disappeared above her.</p>
+            <p>Mira closed her eyes and hoped for a soft landing.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="scene cave" id="caveScene">
+        <div class="cave-glow layer" data-speed="0.06"></div>
+        <div class="crystal crystal-left layer" data-speed="0.04" aria-hidden="true">♦</div>
+        <div class="crystal crystal-right layer" data-speed="0.1" aria-hidden="true">♦</div>
+        <div class="moss" aria-hidden="true"></div>
+
+        <div class="story-card reveal cave-card">
+          <p class="chapter">Chapter Five</p>
+          <h2>A light in the dark</h2>
+          <p>Mira landed on a bed of soft green moss.</p>
+          <p>Behind a knot of roots, something golden was glowing.</p>
+        </div>
+
+        <div class="cave-characters" aria-hidden="true">
+          <span class="cave-princess">♛</span>
+          <span class="roots">╲╳╱</span>
+          <span class="trapped-star" id="trappedStar">✦</span>
+        </div>
+
+        <p class="scene-caption reveal quote">“I am Pip,” said the little star. “I fell from the sky.”</p>
+      </section>
+
+      <section class="scene rescue" id="rescueScene">
+        <div class="vine" id="vine" aria-hidden="true">
+          <span>❧</span><span>❧</span><span>❧</span><span>❧</span>
+        </div>
+        <div class="free-star" id="freeStar" aria-hidden="true">✦</div>
+
+        <div class="story-card reveal">
+          <p class="chapter">Chapter Six</p>
+          <h2>The way back up</h2>
+          <p>Mira pulled the roots apart and freed Pip.</p>
+          <p>The star shone brighter, and a silver vine grew toward the opening.</p>
+        </div>
+
+        <p class="scene-caption reveal">Together, they climbed toward the morning sky.</p>
+      </section>
+
+      <section class="scene sunrise">
+        <div class="sun layer" data-speed="0.03"></div>
+        <div class="cloud cloud-one layer" data-speed="0.05"></div>
+        <div class="cloud cloud-two layer" data-speed="0.09"></div>
+        <div class="home-castle" aria-hidden="true">♜</div>
+        <div class="home-star" aria-hidden="true">✦</div>
+
+        <div class="story-card final-card reveal">
+          <p class="chapter">Chapter Seven</p>
+          <h2>Home again</h2>
+          <p>Pip flew back into the sky, leaving one golden sparkle in Mira's hand.</p>
+          <p>Mira returned home knowing courage can begin with one small step.</p>
+          <p class="the-end">The End</p>
+          <a class="again-link" href="#top">Read again ↑</a>
+        </div>
+
+        <p class="photo-credit">
+          Photos by
+          <a href="https://unsplash.com/photos/a-single-street-lamp-illuminates-a-dark-forest-at-night-egnTMTRUe1A" target="_blank" rel="noreferrer">William Dmytrow</a>
+          and
+          <a href="https://unsplash.com/photos/a-light-shines-through-the-opening-of-a-cave-hlj6xJG30FE" target="_blank" rel="noreferrer">Intricate Explorer</a>
+          on Unsplash
+        </p>
+      </section>
+    </main>
 
     <script src="script.js"></script>
   </body>
